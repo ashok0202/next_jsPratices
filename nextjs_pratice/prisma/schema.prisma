@@ -30,6 +30,6 @@ model User {
 
   forgotPasswordToken String?
   forgotPasswordTokenExpiry DateTime?
-  verifiyToken DateTime?
+  verifiyToken String?
   verifyTokenExpiry DateTime?
 }
