@@ -33,3 +33,14 @@ model User {
   verifiyToken String?
   verifyTokenExpiry DateTime?
 }
+
+model Student{
+  id Int @id @default(autoincrement())
+  name String
+  age Int
+  phone String
+  address String
+  email String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

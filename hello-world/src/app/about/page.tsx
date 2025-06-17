@@ -1,3 +1,10 @@
+import HomePage from "@/components/HomePage";
+
 export default function About() {
-    return <h1>Wellcome About page Controller</h1>;
+    return (
+        <div>
+            <h1>Wellcome About page Controller</h1>
+            <HomePage />
+        </div>
+    )
 }
