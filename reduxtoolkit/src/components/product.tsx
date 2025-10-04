@@ -10,8 +10,16 @@ import {
 } from "./ui/card";
 import { Button } from "./ui/button";
 import type { IProduct } from "./products";
+import { useDispatch } from "react-redux";
+import { add } from "../slice/cartSlice"
 
 const Product = ({ product }: { product: IProduct }) => {
+  const dispatch = useDispatch()
+  const addToCart = (product: IProduct) => {
+    console.log(product);
+    dispatch(add(product))
+  }
+
   return (
     <div className="items-center">
       <Card>
@@ -29,7 +37,7 @@ const Product = ({ product }: { product: IProduct }) => {
           <p>{product.price}</p>
         </CardContent>
         <CardFooter>
-          <Button variant={"outline"}>Add To Cart</Button>
+          <Button variant={"outline"} onClick={() => {addToCart(product)}}>Add To Cart</Button>
         </CardFooter>
       </Card>
     </div>

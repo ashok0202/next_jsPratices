@@ -1,4 +1,4 @@
-import  { useState } from "react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
@@ -12,16 +12,17 @@ import {
   Package2,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 interface NavbarProps {
-  cartItemCount?: number;
-  onCartClick?: () => void;
   onProfileClick?: () => void;
 }
 
-const Navbar = ({ cartItemCount = 0, onCartClick, onProfileClick }: NavbarProps) => {
+const Navbar = ({ onProfileClick }: NavbarProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const cartItemCount = useSelector((state: any) => state.cart.length);
 
   const navigationLinks = [
     { name: "Home", href: "/" },
@@ -78,9 +79,9 @@ const Navbar = ({ cartItemCount = 0, onCartClick, onProfileClick }: NavbarProps)
             </Button>
 
             {/* Profile */}
-            <Button 
-              variant="ghost" 
-              size="icon" 
+            <Button
+              variant="ghost"
+              size="icon"
               onClick={onProfileClick}
               className="hidden md:flex"
             >
@@ -91,10 +92,12 @@ const Navbar = ({ cartItemCount = 0, onCartClick, onProfileClick }: NavbarProps)
             <Button
               variant="ghost"
               size="icon"
-              onClick={onCartClick}
+              // onClick={onCartClick}
               className="relative"
             >
-             <a href="/cart"> <ShoppingCart className="w-5 h-5" /></a>
+              <Link to="/cart">
+                <ShoppingCart className="w-5 h-5" />
+              </Link>
               {cartItemCount > 0 && (
                 <Badge
                   variant="destructive"
@@ -112,7 +115,11 @@ const Navbar = ({ cartItemCount = 0, onCartClick, onProfileClick }: NavbarProps)
               className="md:hidden"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
-              {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              {isMenuOpen ? (
+                <X className="w-5 h-5" />
+              ) : (
+                <Menu className="w-5 h-5" />
+              )}
             </Button>
           </div>
         </div>
@@ -155,7 +162,12 @@ const Navbar = ({ cartItemCount = 0, onCartClick, onProfileClick }: NavbarProps)
                 <Heart className="w-4 h-4 mr-2" />
                 Wishlist
               </Button>
-              <Button variant="ghost" size="sm" className="flex-1" onClick={onProfileClick}>
+              <Button
+                variant="ghost"
+                size="sm"
+                className="flex-1"
+                onClick={onProfileClick}
+              >
                 <User className="w-4 h-4 mr-2" />
                 Profile
               </Button>

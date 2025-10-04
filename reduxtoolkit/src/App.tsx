@@ -1,6 +1,6 @@
 import "./App.css";
 
-import { Route, RouterProvider, Routes } from "react-router-dom";
+import { Route,Routes } from "react-router-dom";
 import Dashboard from "./components/Dashboard";
 import Cart from "./components/Cart";
 import RootLayout from "./components/RootLayout";
