@@ -1,4 +1,6 @@
-export const products = [
+import type { IProduct } from "../models/IProduct";
+
+export const products:IProduct[] = [
   {
     _id: 1,
     name: "Men Soild T-Shirt",
