@@ -1,11 +1,11 @@
 
 "use server";
-
-import  pdf  from "pdf-parse"
 import { db } from "@/lib/db-config";
 import { documents } from "@/lib/db-schema";
 import { generateEmbeddings } from "@/lib/embeddings";
 import { chunkContent } from "@/lib/chunking";
+const pdf = require("pdf-parse");
+
 
 export async function processPdfFile(formData: FormData) {
   try {
