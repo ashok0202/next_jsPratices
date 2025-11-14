@@ -2,6 +2,8 @@ import { streamText, UIMessage, convertToModelMessages } from "ai";
 //import { openai } from "@ai-sdk/openai";
 import { google } from "@ai-sdk/google";
 
+
+// multi-model type is used for the image analizer and pdf analizer also used for multi-modal
 export async function POST(req: Request) {
   try {
     const { messages }: { messages: UIMessage[] } = await req.json();
